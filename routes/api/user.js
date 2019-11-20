@@ -23,20 +23,19 @@ router.get("/api/users/:id", function (req, res) {
 });
 
 // Route for  updating user datato be used for client side
-router.put("/api/users/:id", ({body, params}, res) => {
-    // Users.findByIdAndUpdate(
-    //   params.id, 
-    //   { $push: { exercises: body } }, 
-    //   { new: true, runValidators: true }
-    // ).then(dbworkouts => {
-    //   res.json(dbworkouts);
-    // }).catch(err => {
-    //   res.json(err)
-    })
-  })
-
-  // Route for logging out user
-  app.get("/logout", function (req, res) {
-    req.logout();
-    res.redirect("/");
+router.put("/api/users/:id", ({ body, params }, res) => {
+    User.update({
+        email: req.body.email,
+        password: req.body.password
+    }).then(function (results) {
+        res.json(results);
+    });
 });
+
+
+
+    // Route for logging out user
+    app.get("/logout", function (req, res) {
+        req.logout();
+        res.redirect("/");
+    });
