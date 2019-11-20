@@ -1,3 +1,0 @@
-# final-project-Feed-Me-app
-
-Swiping application that lets users choose a restaurant by swiping left (dislike) or right (like) through images (cards) of food. Upon opening the app, users will be presented with an images (card) of a dish representing a certain cuisine. When the user swipes left, another card appears with a picture of a food representing a random, different cuisine. When user swipes right, a list of restaurants (specific to cuisine choice) around user’s current location or  choice location (request city & state/zip code) is shown. User can choose a restaurant from list by clicking on a save button. This adds the targeted restaurant to a saved restaurant list/database.
