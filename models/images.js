@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    var Image = sequelize.define("Images", {
+    var Images = sequelize.define("Images", {
         image_link: {
             type: DataTypes.STRING
         },
@@ -8,5 +8,5 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
-    return Image;
+    return Images;
 };

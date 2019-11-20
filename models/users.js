@@ -1,18 +1,15 @@
 module.exports = function (sequelize, DataTypes) {
-    var Favorites = sequelize.define("Favorites", {
-        name: {
+    var Users = sequelize.define("Users", {
+        username: {
             type: DataTypes.STRING
         },
-        address: {
+        password: {
             type: DataTypes.STRING
         },
-        phone: {
-            type: DataTypes.STRING
-        },
-        hours: {
+        email: {
             type: DataTypes.STRING
         }
     });
 
-    return Favorites;
+    return Users;
 };
