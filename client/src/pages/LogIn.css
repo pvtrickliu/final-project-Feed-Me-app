@@ -1,0 +1,11 @@
+@media all and (min-width: 480px) {
+
+body {background: red};
+
+
+}
+
+
+.styleMe {
+    width: 50px
+}
