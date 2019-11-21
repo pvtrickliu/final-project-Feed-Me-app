@@ -14,6 +14,13 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("public"));
 }
 
+var passport = require("./config/passport");
+var session = require("express-session");
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 require('./routes')(app)
 
 
