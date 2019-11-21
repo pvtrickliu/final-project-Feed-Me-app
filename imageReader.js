@@ -32,6 +32,7 @@ function postImage(line, foodType) {
     
     })
 }
+// postImage(process.argv[3],process.argv[2]);
 let foodType;
 
 reader.on('line', async function(line) {
