@@ -12,6 +12,15 @@ module.exports = function (sequelize, DataTypes) {
         hours: {
             type: DataTypes.STRING
         }
+
+
+
+        // userId: {
+
+        // },
+        // restuarantId: {
+
+        // }
     });
 
     return Favorites;

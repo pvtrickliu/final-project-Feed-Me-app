@@ -1,14 +1,14 @@
 {
   "development": {
     "username": "root",
-    "password": "Wazy0129",
+    "password": "google33",
     "database": "feedme_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "Wazy0129",
+    "password": "google33",
     "database": "feedme_db",
     "host": "127.0.0.1",
     "dialect": "mysql",
@@ -16,7 +16,7 @@
   },
   "production": {
     "username": "root",
-    "password": "Wazy0129",
+    "password": "google33",
     "database": "feedme_db",
     "host": "127.0.0.1",
     "dialect": "mysql",
