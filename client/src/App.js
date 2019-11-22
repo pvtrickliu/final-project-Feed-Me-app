@@ -1,7 +1,8 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Login from "./pages/LogIn";
 import Home from "./pages/Home"
+import SignUp from "./pages/SignUp";
 // import Detail from "./pages/Detail";
 // import NoMatch from "./pages/NoMatch";
 // import Nav from "./components/Nav";
@@ -14,13 +15,12 @@ function App() {
       <div>
         <StoreProvider>
           <Switch>
-            <div>
             <Route exact path="/" component={Login} />
             <Route exact path="/home" component={Home} />
             {/* <Route exact path="/favorites" component={FavoritesList} />
             <Route exact path="/posts/:id" component={Detail} />
             <Route component={NoMatch} />  */}
-            </div>
+            <Route exact path="/signup" component={SignUp} />
           </Switch>
         </StoreProvider>
       </div>
