@@ -3,15 +3,45 @@ import { Link } from "react-router-dom";
 import "./SignUp.css"
 
 export default class SignUp extends Component {
-  constructor(props) {
-    super(props);
+  
+  state = {
+    usernameSignup:"",
+    emailAddressSignup:"",
+    passwordSignup: ""
   }
+
+  usernameSignUpChangedHandler = (event) => {
+    this.state.usernameSignup = event.target.value
+    this.setState(
+      {usernameSignup: event.target.value}
+    )
+  }
+
+  emailSignUpChangedHandler = (event) => {
+    this.state.emailAddressSignup = event.target.value
+    this.setState(
+      {emailAddressSignup: event.target.value}
+    )
+  }
+
+  passwordSignUpChangedHandler = (event) => {
+    this.state.emailAddressSignup = event.target.value
+    this.setState(
+      {passwordSignup: event.target.value}
+    )
+  }
+
+  onSubmitClicked = () => {
+    console.log("username is : " + this.state.usernameSignup + "password is :" + this.state.passwordSignup + "email is: " + this.state.emailAddressSignup)
+  }
+    
+  
 
   render() {
     return (
       <div className="base-container" ref={this.props.containerRef}>
-        <div class="backLink">
-          <Link to="/"><a class="stretched-link">Back to Log-In</a></Link>
+        <div className="backLink">
+          <Link to="/" className="stretched-link">Back to Log-In</Link>
         </div>
         <h5 className="hungryText">Hungry...?</h5>
         <p className="joinText">sign up with</p>
@@ -21,20 +51,20 @@ export default class SignUp extends Component {
           <div className="form">
             <div className="form-group">
               <label className="label" htmlFor="username">Username:</label><br />
-              <input className="input" type="text" class="form-control" id="exampleFormControlInput1" name="username" placeholder="Username" />
+              <input className="input form-control" type="text" id="username" name="username" placeholder="Username" onChange={this.usernameSignUpChangedHandler} value={this.state.usernameSignup} />
             </div>
             <div className="form-group">
               <label className="label" htmlFor="username">E-mail address:</label><br />
-              <input className="input" type="text" class="form-control" id="exampleFormControlInput1" name="username" placeholder="E-mail" />
+              <input className="input form-control" type="text" id="email" name="username" placeholder="E-mail" onChange={this.emailSignUpChangedHandler} value={this.state.emailAddressSignup} />
             </div>
             <div className="form-group">
               <label className="label" htmlFor="password">Password:</label><br />
-              <input className="input" type="password" class="form-control" id="exampleFormControlInput1" name="password" placeholder="Password" />
+              <input className="input form-control" type="password" id="password" name="password" placeholder="Password" onChange={this.passwordSignUpChangedHandler} value={this.state.passwordSignup} />
             </div>
           </div>
         </div>
         <div className="footer">
-          <button type="button" className="btn submitBtn">
+          <button type="button" className="btn submitBtn" onClick={this.onSubmitClicked}>
             Submit
           </button>
 
