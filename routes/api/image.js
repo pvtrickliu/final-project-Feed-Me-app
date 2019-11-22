@@ -42,6 +42,15 @@ app.post('/', (req, res) => {
   });
 });
 
+app.get('/', (req,res)=>{
+    console.log("query", req.query);
+})
+
+
+  // app.post(/api/images) // add images to database
+
+  // app.get(/api/images?start=10&count=10) // get food type associate with img
+
 module.exports = app;
 
 
@@ -81,15 +90,7 @@ module.exports = app;
   //   download_image(req.body.image_link);
   // })
 
-  // app.get('/', (req,res)=>{
-  //   console.log("query", req.query);
-
-  // })
-
-
-  // app.post(/api/images) // add images to database
-
-  // app.get(/api/images?start=10&count=10) // get food type associate with img
+  
 
 
   // findAll: function(req, res) {
