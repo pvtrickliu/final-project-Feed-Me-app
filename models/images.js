@@ -5,7 +5,11 @@ module.exports = function (sequelize, DataTypes) {
         },
         foodType: {
             type: DataTypes.STRING
-        }
+        },
+        
+    },
+    {
+        timestamps: false
     });
 
     return Images;

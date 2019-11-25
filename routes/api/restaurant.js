@@ -2,6 +2,9 @@ var db = require("../../models");
 var axios = require("axios");
 var express = require('express');
 var app = express();
+const appRoot = require('app-root-path');
+const Sequelize = require("Sequelize")
+const Op = Sequelize.Op;
 
 var GEO_API = "AIzaSyCYE9Fqg83eLXcEZJF7KmC40Sl6DIVvMKA";
     // show the list of restaurants based on geolocation and cuisine
