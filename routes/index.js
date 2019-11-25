@@ -1,6 +1,6 @@
 const imageRoutes = require("./api/image");
 const userRoutes = require('./api/user')
-// const restaurantRoutes = require("./api/restaurant")
+const restaurantRoutes = require("./api/restaurant")
 
 // API Routes
 
@@ -9,5 +9,6 @@ const userRoutes = require('./api/user')
 module.exports = function(app){
   app.use("/api/images", imageRoutes);
   // app/use("/", restaurantRoutes)
-  app.use("/api/users", userRoutes)
+  app.use("/api/users", userRoutes);
+  app.use('/api/restaurants', restaurantRoutes)
 };
