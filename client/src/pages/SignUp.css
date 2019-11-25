@@ -1,24 +1,57 @@
 @import url('https://fonts.googleapis.com/css?family=Homemade+Apple&display=swap');
 
 body{ background-color: rgb(238, 58, 58)}
-.styleMe {
+
+.backLink {
+    text-decoration: underline;
+    margin-left: 20px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.stretched-link {
+    color: white !important;
+}
+
+.hungryText {
+    padding-top: 40px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: yellow !important;
+    font-weight: 900;
+    font-size: 35px;
+ 
+    text-align: center !important;
+
+}
+
+.joinText {
+    padding-top: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: yellow !important;
+    text-align: center;
+    font-size: 25px;
+
+}
+.restaurantPhoto {
     display: block;
     margin-left: 0px;
     margin-right: 0px;
     max-width: 100%;
     height: auto;
-    margin-bottom: 35px;
- 
+    margin-bottom: 5px;
+    border-radius: 0%;
+    border-radius: 50%;
+
       }
 
 
 .title { 
-    padding-top: 100px;
+    padding-top: 60px;
     font-family:'Homemade Apple', cursive;
     color: white;
     text-align: center;
     font-weight: bold;
-    font-size: 60px;
+    font-size: 65px;
     margin-bottom: 20px;
   
     }
@@ -28,12 +61,12 @@ body{ background-color: rgb(238, 58, 58)}
     font-size: 20px;
     color: white;
     width: 95% !important;
-    font-weight: bold;
     display:block;
     margin:0px auto;
+    margin-top: 50px;
 }
 
-.loginBtn
+.submitBtn
     {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: white;
@@ -44,19 +77,10 @@ body{ background-color: rgb(238, 58, 58)}
     margin:0px auto;
     border-radius: 12px;
     border: 4px solid white; 
-    margin-top: 30px;
+    margin-top: 50px;
     margin-bottom: 25px;
     }
 
-.newUserLink {
-    text-align: center !important;
-    text-decoration: underline;
-}
-
-.newUser {
-    color: yellow !important;
-    font-weight: bold;
-}
 
 
  

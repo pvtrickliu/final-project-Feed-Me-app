@@ -16,14 +16,13 @@ function App() {
       <div>
         <StoreProvider >
           <Switch>
-            <div>
             <Route exact path="/" component={Login} />
             <Route exact path="/home" component={Home} />
             <Route exact path="/swipe" component={Swipe} />
             {/* <Route exact path="/favorites" component={FavoritesList} />
             <Route exact path="/posts/:id" component={Detail} />
             <Route component={NoMatch} />  */}
-            </div>
+            <Route exact path="/signup" component={SignUp} />
           </Switch>
         </StoreProvider>
       </div>
