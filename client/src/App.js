@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./pages/LogIn";
 import Home from "./pages/Home";
+import SignUp from "./pages/SignUp";
 import Swipe from "./pages/Swipe";
 // import Detail from "./pages/Detail";
 // import NoMatch from "./pages/NoMatch";
