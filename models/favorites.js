@@ -14,6 +14,15 @@ module.exports = function (sequelize, DataTypes) {
         hours: {
             type: DataTypes.STRING
         }
+
+
+
+        // userId: {
+
+        // },
+        // restuarantId: {
+
+        // }
     });
     
     Favorites.associate = function (models) {

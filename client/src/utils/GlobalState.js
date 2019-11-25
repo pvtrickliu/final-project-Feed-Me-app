@@ -1,26 +1,22 @@
 import React, { createContext, useReducer, useContext } from "react";
-import {
-  // SET_CURRENT_POST,
-  // REMOVE_POST,
-  // UPDATE_POSTS,
-  // ADD_POST,
-  // ADD_FAVORITE,
-  // UPDATE_FAVORITES,
-  // REMOVE_FAVORITE,
-  // LOADING
-} from "./actions";
 
 const StoreContext = createContext();
 const { Provider } = StoreContext;
 
 const reducer = (state, action) => {
-  // switch (action.type) {
-  //   case SET_CURRENT_POST:
-  //     return {
-  //       ...state,
-  //       currentPost: action.post,
-  //       loading: false
-  //     };
+  switch (action.type) {
+    case "SET_IMAGES":
+      return {
+        ...state,
+        images: action.images
+      };
+    
+    case "CHANGE_IMAGE_INDEX":
+      return {
+        ...state,
+        currentImage: state.currentImage + action.offset
+      }
+  }
 
   //   case UPDATE_POSTS:
   //     return {
@@ -79,15 +75,16 @@ const reducer = (state, action) => {
 
 const StoreProvider = ({ value = [], ...props }) => {
   const [state, dispatch] = useReducer(reducer, {
-  // state:
-  // users: [ ],
-  // user: {username, email, passowrd},
-  // images: [ ],
-  // image: {image link, food type},
-  // restaurants: [ ],
-  // restaurant: {name, address, phone number, hours of operation},
-  // favorites: [ ],
-  // favorite: {name, address, phone number, hours of operation}
+    // state:
+    // users: [ ],
+    // user: {username, email, passowrd},
+    images: [],
+    currentImage: 0,
+    // image: {image link, food type},
+    // restaurants: [ ],
+    // restaurant: {name, address, phone number, hours of operation},
+    // favorites: [ ],
+    // favorite: {name, address, phone number, hours of operation}
   });
 
   return <Provider value={[state, dispatch]} {...props} />;

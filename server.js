@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+require('dotenv').config();
 var db = require("./models")
 
 // Define middleware here
@@ -13,6 +14,13 @@ if (process.env.NODE_ENV === "production") {
 }else{
   app.use(express.static("public"));
 }
+
+var passport = require("./config/passport");
+var session = require("express-session");
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 require('./routes')(app)
 
