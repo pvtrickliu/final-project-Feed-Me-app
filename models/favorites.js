@@ -1,3 +1,5 @@
+
+
 module.exports = function (sequelize, DataTypes) {
     var Favorites = sequelize.define("Favorites", {
         name: {
@@ -13,6 +15,12 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING
         }
     });
+    
+    Favorites.associate = function (models) {
+        models.Favorites.belongsTo(models.Users, {
+            foreignKey: 'userId'
+        })
+    }
 
     return Favorites;
 };
