@@ -27,6 +27,7 @@
     "express": "^4.16.3",
     "express-session": "^1.17.0",
     "fs": "0.0.1-security",
+    "fsevents": "^1.2.9",
     "if-env": "^1.0.4",
     "mongoose": "^5.3.16",
     "mysql2": "^2.0.1",
