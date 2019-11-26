@@ -1,16 +1,16 @@
-const db = require("../../models")
+const db = require("../../models");
 const express = require("express");
-const app = express()
+const app = express();
 const axios = require("axios");
 const fs = require('fs');
 const appRoot = require('app-root-path');
-const shortid = require("shortid")
-const Sequelize = require("Sequelize")
+const shortid = require("shortid");
+const Sequelize = require("Sequelize");
 const Op = Sequelize.Op;
 
 // app.post(/api/images) // add images to database
 app.post('/', (req, res) => {
-  let dotat = req.body.image_link.lastIndexOf('.')
+  let dotat = req.body.image_link.lastIndexOf('.');
   let ext = req.body.image_link.substr(dotat - 1);
   let filename = shortid.generate() + ext;
   let filepath = appRoot + '/client/public/images/' + filename;
@@ -61,7 +61,7 @@ app.get('/', (req, res) => {
           [Op.between]: [start, count]
         }
       }
-    }
+    };
   };
 
   console.log(condition)
@@ -70,7 +70,7 @@ app.get('/', (req, res) => {
   ).then(etc => {
     res.json(etc)
   }).catch(err => {
-    console.log(err.message)
+    console.log(err.message);
   });
 });
 

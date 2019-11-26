@@ -1,6 +1,6 @@
 const readline = require('readline');
 const fs = require('fs');
-const request = require('request')
+const request = require('request');
 let infile = process.argv[2];
 let reader = readline.createInterface({
     input: fs.createReadStream(infile)
@@ -22,6 +22,7 @@ function postImage(line, foodType, cuisineId) {
                 foodType: foodType,
                 cuisineId: cuisineId
             },
+            
             function(err) {
                 if (err) {
                     reject(err);
@@ -29,10 +30,10 @@ function postImage(line, foodType, cuisineId) {
                     resolve();
                 }
             }
-        })
+        });
+    });
+};
 
-    })
-}
 // postImage(process.argv[3],process.argv[2]);
 let foodType;
 let cuisineId;
@@ -44,20 +45,17 @@ reader.on('line', async function (line) {
     if (line.length !== 0) {
         if (line.charAt(0) === "+") {
             foodType = line.substr(1);
-            // console.log(foodType)
         } else if (line.charAt(0) === "*") {
             cuisineId = line.substr(1)
-            // console.log(cuisineId)
         } else {
             try {
-                // console.log(line, foodType, cuisineId)
                 await postImage(line, foodType, cuisineId)
 
             } catch (err) {
                 console.log(err);
-            }
-        }
-    }
+            };
+        };
+    };
 });
 
 reader.on('close', function (line) {

@@ -19,80 +19,29 @@ const reducer = (state, action) => {
           ...state,
           currentImage: 0,
           counter: state.counter + 1
-        }
-      }
+        };
+      };
+
       return {
         ...state,
         currentImage: state.currentImage + action.offset
-      }
+      };
 
     case "SHOW_POPUP":
       return {
         ...state,
         isShowing: true
-      }
+      };
 
     case "HIDE_POP":
       return {
         ...state,
         isShowing: false
-      }
+      };
 
-  }
-
-  //   case UPDATE_POSTS:
-  //     return {
-  //       ...state,
-  //       posts: [...action.posts],
-  //       loading: false
-  //     };
-
-  //   case ADD_POST:
-  //     return {
-  //       ...state,
-  //       posts: [action.post, ...state.posts],
-  //       loading: false
-  //     };
-
-  //   case REMOVE_POST:
-  //     return {
-  //       ...state,
-  //       posts: state.posts.filter((post) => {
-  //         return post._id !== action._id;
-  //       })
-  //     };
-
-  //   case ADD_FAVORITE:
-  //     return {
-  //       ...state,
-  //       favorites: [action.post, ...state.favorites],
-  //       loading: false
-  //     };
-
-  //   case UPDATE_FAVORITES:
-  //     return {
-  //       ...state,
-  //       favorites: [...state.favorites],
-  //       loading: false
-  //     };
-
-  //   case REMOVE_FAVORITE:
-  //     return {
-  //       ...state,
-  //       favorites: state.favorites.filter((post) => {
-  //         return post._id !== action._id;
-  //       })
-  //     };
-
-  //   case LOADING:
-  //     return {
-  //       ...state,
-  //       loading: true
-  //     };
-
-  //   default:
-  //     return state;
-  // }
+    default:
+      return state;
+  };
 };
 
 const StoreProvider = ({ value = [], ...props }) => {
@@ -104,9 +53,7 @@ const StoreProvider = ({ value = [], ...props }) => {
     currentImage: 0,
     counter: 0,
     isShowing: false,
-    hide: true,
-    geolocation: []
-    // image: {image link, food type},
+    // geolocation: []
     // restaurants: [ ],
     // restaurant: {name, address, phone number, hours of operation},
     // favorites: [ ],

@@ -13,7 +13,7 @@ const Swipe = () => {
     API.setImage()
       .then(res => { dispatch({ type: "SET_IMAGES", images: res.data }) })
       .catch(err => console.log(err))
-  }, [state.counter])
+  }, [state.counter]);
 
   const toNo = (event) => {
     event.preventDefault();
@@ -36,8 +36,8 @@ const Swipe = () => {
     dispatch({
       type: "HIDE_POP",
       isShowing: false
-    })
-  }
+    });
+  };
 
   return (
     <div className="swipe">
@@ -55,7 +55,7 @@ const Swipe = () => {
             <img src={state.images[state.currentImage].image_link} className="image"></img>
             {/* <h2>{state.images[state.currentImage].foodType}</h2> */}
           </div>
-          : 'foo'
+          : null
       }
       <div className="button">
         <Button text="No" onClick={toNo} />
