@@ -29,11 +29,11 @@ function Restaurants() {
       {state.restaurants.length ? (
         <List>
           {state.restaurants.map(restaurant => (
-            <ListItem >
-              {restaurant.restaurant.name}
-              {restaurant.restaurant.location.address}
-              {restaurant.restaurant.phone_numbers}
-              {restaurant.restaurant.timings}
+            <ListItem key="">
+              <div>{restaurant.restaurant.name}</div>
+              <div>{restaurant.restaurant.location.address}</div>
+              <div>{restaurant.restaurant.phone_numbers}</div>
+              <div>{restaurant.restaurant.timings}</div>
               {/* <Btn onClick={() => removePost(post._id)} /> */}
               <Btn text="Add to favorite"/>
             </ListItem>
