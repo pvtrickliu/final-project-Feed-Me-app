@@ -2,10 +2,17 @@ import axios from "axios";
 
 export default {
   setImage: function (number) {
-    return axios.get(`/api/images?start=${number||Math.floor(Math.random()*89)}&count=10`)
-                .then(data => {
-                  return data
-    }).catch(err => console.log(err))
+    let start = Math.floor(Math.random() * 89);
+    let num;
+
+    if (num === start || num < start + 10) {
+      start = Math.floor(Math.random() * 89);
+      return start;
+    };
+
+    return axios.get(`/api/images?start=${number || start}&count=10`)
+                .then(res => {return res})
+                .catch(err => console.log(err))
   }
 };
 

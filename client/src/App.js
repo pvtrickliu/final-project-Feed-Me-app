@@ -12,6 +12,7 @@ import API from './utils/API'
 // import FavoritesList from "./pages/FavoritesList";
 
 function App() {
+
   return (
     <Router>
       <div>

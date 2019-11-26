@@ -1,4 +1,6 @@
 import React, { createContext, useReducer, useContext } from "react";
+import { strictEqual } from "assert";
+import { stat } from "fs";
 
 const StoreContext = createContext();
 const { Provider } = StoreContext;
@@ -10,67 +12,36 @@ const reducer = (state, action) => {
         ...state,
         images: action.images
       };
-    
+
     case "CHANGE_IMAGE_INDEX":
+      if (state.currentImage === 9) {
+        return {
+          ...state,
+          currentImage: 0,
+          counter: state.counter + 1
+        };
+      };
+
       return {
         ...state,
         currentImage: state.currentImage + action.offset
-      }
-  }
+      };
 
-  //   case UPDATE_POSTS:
-  //     return {
-  //       ...state,
-  //       posts: [...action.posts],
-  //       loading: false
-  //     };
+    case "SHOW_POPUP":
+      return {
+        ...state,
+        isShowing: true
+      };
 
-  //   case ADD_POST:
-  //     return {
-  //       ...state,
-  //       posts: [action.post, ...state.posts],
-  //       loading: false
-  //     };
+    case "HIDE_POP":
+      return {
+        ...state,
+        isShowing: false
+      };
 
-  //   case REMOVE_POST:
-  //     return {
-  //       ...state,
-  //       posts: state.posts.filter((post) => {
-  //         return post._id !== action._id;
-  //       })
-  //     };
-
-  //   case ADD_FAVORITE:
-  //     return {
-  //       ...state,
-  //       favorites: [action.post, ...state.favorites],
-  //       loading: false
-  //     };
-
-  //   case UPDATE_FAVORITES:
-  //     return {
-  //       ...state,
-  //       favorites: [...state.favorites],
-  //       loading: false
-  //     };
-
-  //   case REMOVE_FAVORITE:
-  //     return {
-  //       ...state,
-  //       favorites: state.favorites.filter((post) => {
-  //         return post._id !== action._id;
-  //       })
-  //     };
-
-  //   case LOADING:
-  //     return {
-  //       ...state,
-  //       loading: true
-  //     };
-
-  //   default:
-  //     return state;
-  // }
+    default:
+      return state;
+  };
 };
 
 const StoreProvider = ({ value = [], ...props }) => {
@@ -80,7 +51,9 @@ const StoreProvider = ({ value = [], ...props }) => {
     // user: {username, email, passowrd},
     images: [],
     currentImage: 0,
-    // image: {image link, food type},
+    counter: 0,
+    isShowing: false,
+    // geolocation: []
     // restaurants: [ ],
     // restaurant: {name, address, phone number, hours of operation},
     // favorites: [ ],

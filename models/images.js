@@ -6,7 +6,9 @@ module.exports = function (sequelize, DataTypes) {
         foodType: {
             type: DataTypes.STRING
         },
-        
+        cuisineId: {
+            type: DataTypes.INTEGER
+        }
     },
     {
         timestamps: false
