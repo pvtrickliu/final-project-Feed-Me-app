@@ -1,11 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Homemade+Apple&display=swap');
 
 body{ background-color: rgb(238, 58, 58)}
+
+.swipe {
+    text-align: center;
+}
+
 .image {
     display: block;
     margin: 0 auto;
     width: 80%;
-    /* height: 500px; */
 }
 
 .button {
@@ -13,6 +17,17 @@ body{ background-color: rgb(238, 58, 58)}
     margin: 3vh auto;
     text-align: center;
 }
+
+.showFav {
+    margin: 3vh auto;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 900;
+    color: yellow !important;
+    font-size: 1.7em;
+    text-decoration: underline;
+}
+
+
 
 @media all and (min-width: 480px) {
 }

@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import API from "../utils/API";
+import { Link } from "react-router-dom"
 import { useStoreContext } from "../utils/GlobalState";
 import Button from "../components/Btn";
 import Popup from "../components/Popup"
@@ -13,12 +14,10 @@ const Swipe = () => {
       .then(res => { dispatch({ type: "SET_IMAGES", images: res.data }) })
       .catch(err => console.log(err))
 
-    API.setLocation()
-      .then(data => dispatch({ type: "SET_GEOLOCATION", geolocation: data }))
-      .catch(err => console.log(err))
+    // API.setLocation()
+    //   .then(data => dispatch({ type: "SET_GEOLOCATION", geolocation: data }))
+    //   .catch(err => console.log(err))
   }, [state.counter])
-
-
 
   const toNo = (event) => {
     event.preventDefault();
@@ -45,8 +44,15 @@ const Swipe = () => {
   }
 
   return (
-    <div>
+    <div className="swipe">
       <h1 className="header title">Feed Me!</h1>
+      <div>
+        <Link to="/favorites" >
+          <div className="showFav">
+            Your Favorites
+          </div>
+        </Link>
+      </div>
       {
         state.images.length > 0 ?
           <div>

@@ -14,6 +14,9 @@ module.exports = function (sequelize, DataTypes) {
         },
         type: {
             type: DataTypes.STRING
+        },
+        foodType: {
+            type: DataTypes.STRING
         }
     });
 

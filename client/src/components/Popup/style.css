@@ -24,10 +24,10 @@
 }
 
 .popup-modal {
-  z-index: 100;
+  z-index: 1;
   background: rgb(238, 58, 58);
   position: relative;
-  margin: 1.75rem auto;
+  margin: 25vh auto;
   border-radius: 3px;
   max-width: 500px;
   padding: 2rem;
@@ -72,7 +72,7 @@ p {
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   text-align: center;
   color: white;
-  font-size: 2em;
+  font-size: 1.6em;
 }
 
 .useCurrentLocation {
