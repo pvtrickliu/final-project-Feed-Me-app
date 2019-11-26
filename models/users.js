@@ -1,19 +1,3 @@
-// module.exports = function (sequelize, DataTypes) {
-//     var Users = sequelize.define("Users", {
-//         username: {
-//             type: DataTypes.STRING
-//         },
-//         password: {
-//             type: DataTypes.STRING
-//         },
-//         email: {
-//             type: DataTypes.STRING
-//         }
-//     });
-
-//     return Users;
-// };
-
 // Requiring bcrypt for password hashing. Using the bcryptjs version as the regular bcrypt module sometimes causes errors on Windows machines
 var bcrypt = require("bcryptjs");
 // Creating our User model
@@ -40,12 +24,12 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-//   Users.associate = function(models){
-//     Users.hasMany(models.Favorites, {
-//         foreignKey: 'userId',
-//         onDelete: 'cascade'
-//     });
-// };
+  User.associate = function(models){
+    User.hasMany(models.Favorites, {
+        foreignKey: 'userId',
+        onDelete: 'cascade'
+    });
+};
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
   User.prototype.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);

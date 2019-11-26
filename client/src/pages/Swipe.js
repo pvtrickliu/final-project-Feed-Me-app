@@ -13,10 +13,6 @@ const Swipe = () => {
     API.setImage()
       .then(res => { dispatch({ type: "SET_IMAGES", images: res.data }) })
       .catch(err => console.log(err))
-
-    // API.setLocation()
-    //   .then(data => dispatch({ type: "SET_GEOLOCATION", geolocation: data }))
-    //   .catch(err => console.log(err))
   }, [state.counter])
 
   const toNo = (event) => {

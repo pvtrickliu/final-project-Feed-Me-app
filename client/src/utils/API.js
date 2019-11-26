@@ -13,15 +13,7 @@ export default {
       .then(res => {
         return res
       }).catch(err => console.log(err))
-  },
-
-  // setLocation: function () {
-  //   return axios.get(`https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyCYE9Fqg83eLXcEZJF7KmC40Sl6DIVvMKA`)
-  //   .then(res => {
-  //     console.log(res.data)
-  //     return res.data
-  //   }).catch(err => console.log(err))
-  // }
+  }
 };
 
 

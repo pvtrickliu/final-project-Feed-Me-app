@@ -38,12 +38,6 @@ const reducer = (state, action) => {
         isShowing: false
       }
 
-      case "SET_GEOLOCATION":
-      return{
-        ...state,
-        geolocation: action.geolocation
-      }
-
   }
 
   //   case UPDATE_POSTS:

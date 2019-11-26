@@ -6,14 +6,14 @@ const appRoot = require('app-root-path');
 const Sequelize = require("Sequelize")
 const Op = Sequelize.Op;
 
-var GEO_API = "AIzaSyCYE9Fqg83eLXcEZJF7KmC40Sl6DIVvMKA";
+// var GEO_API = "AIzaSyCYE9Fqg83eLXcEZJF7KmC40Sl6DIVvMKA";
     // show the list of restaurants based on geolocation and cuisine
     app.get("/", function (req, res) {
-        console.log('getting location...')
+        // console.log('getting location...')
         axios.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${GEO_API}`).then(geo=>{
             console.log("your coords: ", geo.data.location)
             axios({
-            url: `https://developers.zomato.com/api/v2.1/search?lat=${geo.data.location.lat}&lon=${geo.data.location.lng}&radius=1&sort=real_distance&cuisines=${cuisines.cuisine_id}`,
+            url: `https://developers.zomato.com/api/v2.1/search?lat=${geo.data.location.lat}&lon=${geo.data.location.lng}&radius=1&sort=real_distance&cuisines=${cuisines.cuisineId}`,
             method: "get",
             headers: {
               "user-key": "8646bb21096cb3daddb7328eb3a342e0",
