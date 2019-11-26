@@ -48,9 +48,9 @@ const Swipe = () => {
       <h1 className="header title">Feed Me!</h1>
       <div>
         <Link to="/favorites" >
-          <div className="showFav">
+          <span className="showFav">
             YOUR FAVORITES
-          </div>
+          </span>
         </Link>
       </div>
       {

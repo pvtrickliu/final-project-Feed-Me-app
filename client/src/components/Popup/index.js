@@ -1,10 +1,22 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import API from "../../utils/API";
-import { useStoreContext } from "../../utils/GlobalState";
 import ReactDOM from 'react-dom';
 import "./style.css";
 
+var lat;
+var lon;
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    };
+};
+
+function showPosition(position) {
+    lat = position.coords.latitude;
+    lon = position.coords.longitude;
+    console.log(lat, lon)
+};
 
 const Popup = (props) =>
     props.isShowing ? ReactDOM.createPortal(
@@ -18,7 +30,7 @@ const Popup = (props) =>
                         </button>
                     </div>
                     <Link to="/restaurants" >
-                        <p className="useCurrentLocation">Use your current location</p>
+                        <p onClick={getLocation} className="useCurrentLocation" id="demo">Use your current location</p>
                     </Link>
                     <p className="or">OR</p>
                     <p>Enter your city:</p>
