@@ -39,6 +39,13 @@ const reducer = (state, action) => {
         isShowing: false
       };
 
+    case "PUT_RESTAURANTS":
+      console.log(action)
+      return {
+        ...state,
+        restaurants: action.restaurants
+      }
+
     default:
       return state;
   };
@@ -53,8 +60,7 @@ const StoreProvider = ({ value = [], ...props }) => {
     currentImage: 0,
     counter: 0,
     isShowing: false,
-    // geolocation: []
-    // restaurants: [ ],
+    restaurants: []
     // restaurant: {name, address, phone number, hours of operation},
     // favorites: [ ],
     // favorite: {name, address, phone number, hours of operation}

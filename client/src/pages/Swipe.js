@@ -53,7 +53,6 @@ const Swipe = () => {
         state.images.length > 0 ?
           <div>
             <img src={state.images[state.currentImage].image_link} className="image"></img>
-            {/* <h2>{state.images[state.currentImage].foodType}</h2> */}
           </div>
           : null
       }

@@ -13,7 +13,7 @@ export default {
     return axios.get(`/api/images?start=${number || start}&count=10`)
                 .then(res => {return res})
                 .catch(err => console.log(err))
-  }
+  },
 };
 
 
