@@ -25,7 +25,7 @@ export default class SignUp extends Component {
   }
 
   passwordSignUpChangedHandler = (event) => {
-    this.state.emailAddressSignup = event.target.value
+    this.state.passwordSignup = event.target.value
     this.setState(
       { passwordSignup: event.target.value }
     )
