@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import API from "../utils/API";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import { useStoreContext } from "../utils/GlobalState";
 import Button from "../components/Btn";
-import Popup from "../components/Popup"
-import "./Swipe.css"
+import Popup from "../components/Popup";
+import "./Swipe.css";
 
 const Swipe = () => {
   const [state, dispatch] = useStoreContext();
@@ -49,7 +49,7 @@ const Swipe = () => {
       <div>
         <Link to="/favorites" >
           <div className="showFav">
-            Your Favorites
+            YOUR FAVORITES
           </div>
         </Link>
       </div>
