@@ -1,41 +1,66 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import API from "../utils/API";
 import { useStoreContext } from "../utils/GlobalState";
-// import { useStoreContext } from "../utils/GlobalState";
+import Button from "../components/Btn";
+import Popup from "../components/Popup"
+import "./Swipe.css"
 
 const Swipe = () => {
   const [state, dispatch] = useStoreContext();
 
   useEffect(() => {
     API.setImage()
-      .then(res => {dispatch({ type: "SET_IMAGES", images: res.data })})
+      .then(res => { dispatch({ type: "SET_IMAGES", images: res.data }) })
       .catch(err => console.log(err))
-  }, [state.currentImage])
 
-  const toNext = () => {
+    API.setLocation()
+      .then(data => dispatch({ type: "SET_GEOLOCATION", geolocation: data }))
+      .catch(err => console.log(err))
+  }, [state.counter])
+
+
+
+  const toNo = (event) => {
+    event.preventDefault();
     dispatch({
       type: "CHANGE_IMAGE_INDEX",
-      currentImage: state.currentImage + 1
+      offset: 1
     });
   };
 
-  const toPrev = () => {
+  const toYes = (event) => {
+    event.preventDefault();
     dispatch({
-      type: "CHANGE_IMAGE_INDEX",
-      currentImage: state.currentImage - 1
+      type: "SHOW_POPUP",
+      isShowing: true
     });
   };
+
+  const hide = (event) => {
+    event.preventDefault();
+    dispatch({
+      type: "HIDE_POP",
+      isShowing: false
+    })
+  }
 
   return (
     <div>
+      <h1 className="header title">Feed Me!</h1>
       {
         state.images.length > 0 ?
-          <>
-            <img src={state.images[state.currentImage].image_link}></img>
-            <h2>{state.images[state.currentImage].foodType}</h2>
-          </>
+          <div>
+            <img src={state.images[state.currentImage].image_link} className="image"></img>
+            {/* <h2>{state.images[state.currentImage].foodType}</h2> */}
+          </div>
           : 'foo'
       }
+      <div className="button">
+        <Button text="No" onClick={toNo} />
+        <Button text="Yes" onClick={toYes} />
+      </div>
+
+      <Popup isShowing={state.isShowing} hide={hide} />
     </div>
   );
 };

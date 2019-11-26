@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Homemade+Apple&display=swap');
+
+.YesNo-btn {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: white;
+  background-color:rgb(238, 58, 58);
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 12px;
+  border: 4px solid white; 
+  margin: 0 10%;
+  cursor: pointer;
+}

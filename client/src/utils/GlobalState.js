@@ -1,4 +1,6 @@
 import React, { createContext, useReducer, useContext } from "react";
+import { strictEqual } from "assert";
+import { stat } from "fs";
 
 const StoreContext = createContext();
 const { Provider } = StoreContext;
@@ -10,12 +12,38 @@ const reducer = (state, action) => {
         ...state,
         images: action.images
       };
-    
+
     case "CHANGE_IMAGE_INDEX":
+      if (state.currentImage === 9) {
+        return {
+          ...state,
+          currentImage: 0,
+          counter: state.counter + 1
+        }
+      }
       return {
         ...state,
         currentImage: state.currentImage + action.offset
       }
+
+    case "SHOW_POPUP":
+      return {
+        ...state,
+        isShowing: true
+      }
+
+    case "HIDE_POP":
+      return {
+        ...state,
+        isShowing: false
+      }
+
+      case "SET_GEOLOCATION":
+      return{
+        ...state,
+        geolocation: action.geolocation
+      }
+
   }
 
   //   case UPDATE_POSTS:
@@ -80,6 +108,10 @@ const StoreProvider = ({ value = [], ...props }) => {
     // user: {username, email, passowrd},
     images: [],
     currentImage: 0,
+    counter: 0,
+    isShowing: false,
+    hide: true,
+    geolocation: []
     // image: {image link, food type},
     // restaurants: [ ],
     // restaurant: {name, address, phone number, hours of operation},

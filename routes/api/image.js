@@ -34,7 +34,8 @@ app.post('/', (req, res) => {
   ).then(() => {
     db.Images.create({
       image_link: imagePath,
-      foodType: req.body.foodType
+      foodType: req.body.foodType,
+      cuisineId: req.body.cuisineId
     });
   }).then(dbModel => {
     res.json(dbModel)

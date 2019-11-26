@@ -2,9 +2,24 @@ import axios from "axios";
 
 export default {
   setImage: function (number) {
-    return axios.get(`/api/images?start=${number||Math.floor(Math.random()*89)}&count=10`)
-                .then(data => {
-                  return data
+    let start = Math.floor(Math.random() * 89)
+    let num
+    if (num === start || num < start + 10) {
+      start = Math.floor(Math.random() * 89);
+      console.log(start)
+      return start
+    }
+    return axios.get(`/api/images?start=${number || start}&count=10`)
+      .then(res => {
+        return res
+      }).catch(err => console.log(err))
+  },
+
+  setLocation: function () {
+    return axios.get(`https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyCYE9Fqg83eLXcEZJF7KmC40Sl6DIVvMKA`)
+    .then(res => {
+      console.log(res.data)
+      return res.data
     }).catch(err => console.log(err))
   }
 };
