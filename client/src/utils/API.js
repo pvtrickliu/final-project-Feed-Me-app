@@ -15,7 +15,7 @@ export default {
                 .catch(err => console.log(err))
   },
   login: creds => axios.post('/api/users/login', creds),
-  signUp: creds => axios.post('/api/users/signup', creds),
+  signUp: creds => axios.post('/api/users', creds),
 };
 
 

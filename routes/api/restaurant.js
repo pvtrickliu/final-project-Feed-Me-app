@@ -64,7 +64,7 @@ app.get("/", function (req, res) {
 
 
 // get detalied info and map of the restaurant
-app.get("/api/restaurants/:id", function (req, res) {
+app.get("/:id", function (req, res) {
     db.Restaurants.findAll({
         include: [
             {
