@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useStoreContext } from "../utils/GlobalState";
+import MapBox from '../components/MapBox';
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import Btn from "../components/Btn"
@@ -16,6 +17,7 @@ function Restaurants() {
 
   return (
     <div className="swipe">
+      <MapBox height="200px" restaurants={state.restuarants}/>
       <h1 className="header title">Feed Me!</h1>
       <h1>Recommended Restaurants for You</h1>
       <div>
@@ -25,7 +27,7 @@ function Restaurants() {
           </span>
         </Link>
       </div>
-     
+
       {state.restaurants.length ? (
         <List>
           {state.restaurants.map(restaurant => (
@@ -35,13 +37,13 @@ function Restaurants() {
               <div>{restaurant.restaurant.phone_numbers}</div>
               <div>{restaurant.restaurant.timings}</div>
               {/* <Btn onClick={() => removePost(post._id)} /> */}
-              <Btn text="Add to favorite"/>
+              <Btn text="Add to favorite" />
             </ListItem>
           ))}
         </List>
       ) : null
       }
-      
+
     </div>
   );
 }

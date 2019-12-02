@@ -40,10 +40,16 @@ const reducer = (state, action) => {
       };
 
     case "PUT_RESTAURANTS":
-      console.log(action)
       return {
         ...state,
         restaurants: action.restaurants
+      }
+
+    case "LOGIN_USER":
+      console.log(action)
+      return {
+        ...state,
+        user: action.user
       }
 
     default:
@@ -55,7 +61,7 @@ const StoreProvider = ({ value = [], ...props }) => {
   const [state, dispatch] = useReducer(reducer, {
     // state:
     // users: [ ],
-    // user: {username, email, passowrd},
+    user: {},
     images: [],
     currentImage: 0,
     counter: 0,

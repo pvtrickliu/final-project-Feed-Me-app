@@ -9,6 +9,8 @@ import "./Swipe.css";
 const Swipe = () => {
   const [state, dispatch] = useStoreContext();
 
+  console.log(state.user)
+
   useEffect(() => {
     API.setImage()
       .then(res => { dispatch({ type: "SET_IMAGES", images: res.data }) })
