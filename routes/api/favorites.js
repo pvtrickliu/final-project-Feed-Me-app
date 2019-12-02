@@ -18,11 +18,40 @@ app.get("/:id", function (req, res) {
         })
         .catch(err => console.log(err))
 });
+// create new favorite list
+app.post(":id/choices", function (req, res) {
+    console.log("req", req.body);
+    db.Restaurants.create({
+        name: req.body.name,
+        address: req.body.address,
+        phone: req.body.phone,
+        hours: req.body.hours,
+        type: req.body.type,
+        foodType: req.body.foodType,
+    })
+        .then(results => {
+            res.json(results);
+        });
+});
 
-// app.post(api/users/:id/choices) // create new favorite list
+// update favorite list
+app.put(":id/choices", function (req, res) {
+    db.Restaurants.update(req.body,
+        {
+            where: {
+                id: req.body.id
+            }
+        }).then(function (results) {
+            res.json(results);
+        })
+})
 
-// app.put(api/users/:id/choices) // update favorite list
-
-// app.delete(api/users/:id/choices/:id) // delete checked in restaurants
-
+// delete checked in restaurants
+app.delete(":id/choices/:id", function (req, res) {
+    db.Restaurants.destroy({
+        where: { id: req.params.id }
+    }).then(function (results) {
+        res.json(results);
+    })
+});
 module.exports = app;
