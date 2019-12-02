@@ -11,5 +11,5 @@ module.exports = function(app){
   app.use("/api/images", imageRoutes);
   app.use("/api/users", userRoutes);
   app.use('/api/restaurants', restaurantRoutes);
-  app.use('/api/favorites', favRoutes);
+  // app.use('/api/favorites', favRoutes);
 };
