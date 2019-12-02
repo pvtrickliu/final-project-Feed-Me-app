@@ -7,7 +7,6 @@ export function List({ children }) {
   return (
     <div className="list-overflow-container">
       {children}
-      {/* <ul className="list-group">{children}</ul> */}
     </div>
   );
 }

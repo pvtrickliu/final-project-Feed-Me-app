@@ -33,6 +33,9 @@ export default class SignUp extends Component {
 
   onSubmitClicked = () => {
     console.log("username is : " + this.state.usernameSignup + "password is :" + this.state.passwordSignup + "email is: " + this.state.emailAddressSignup)
+
+
+    
   }
 
 

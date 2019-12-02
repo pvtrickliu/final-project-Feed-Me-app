@@ -29,7 +29,7 @@ function Restaurants() {
       {state.restaurants.length ? (
         <List>
           {state.restaurants.map(restaurant => (
-            <ListItem key="">
+            <ListItem key={restaurant.restaurant.res_id}>
               <div>{restaurant.restaurant.name}</div>
               <div>{restaurant.restaurant.location.address}</div>
               <div>{restaurant.restaurant.phone_numbers}</div>
