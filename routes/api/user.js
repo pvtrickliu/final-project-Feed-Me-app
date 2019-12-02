@@ -5,7 +5,9 @@ const passport = require('../../config/passport')
 
 
 app.post("/login", passport.authenticate("local"), function(req, res){
-    res.json(res.user)
+    console.log('user...', req.user)
+    
+    res.json(req.user)
 });
 
 // Route for getting some data about our user to be used client side

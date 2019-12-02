@@ -13,7 +13,15 @@ function Restaurants() {
 
   console.log('resto', state.restaurants)
 
-
+  const addFav = (e) => {
+    console.log(e.target.id)
+    console.log(state.user)
+    API.saveFav(state.user.id, {data: state.restaurants[e.target.id]})
+    // dispatch({
+    //   type: "ADD_FAVORTIES",
+    //   restaurant: state.currentRestaurant
+    // })
+  }
 
   return (
     <div className="swipe">
@@ -30,14 +38,14 @@ function Restaurants() {
 
       {state.restaurants.length ? (
         <List>
-          {state.restaurants.map(restaurant => (
-            <ListItem key="">
+          {state.restaurants.map((restaurant, index )=> (
+            <ListItem key={index}>
               <div>{restaurant.restaurant.name}</div>
               <div>{restaurant.restaurant.location.address}</div>
               <div>{restaurant.restaurant.phone_numbers}</div>
               <div>{restaurant.restaurant.timings}</div>
               {/* <Btn onClick={() => removePost(post._id)} /> */}
-              <Btn text="Add to favorite" />
+              <Btn text="Add to favorite" id={`${index}`} onClick = {addFav}/>
             </ListItem>
           ))}
         </List>
