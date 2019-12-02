@@ -1,63 +1,66 @@
-import React, { Component, UseState } from 'react';
+import React, { useState } from 'react';
+import { useStoreContext } from '../utils/GlobalState';
+import { Redirect } from 'react-router'
 import loginImg from "../photos/feedmePhoto.jpg";
 import { Link } from "react-router-dom"
 import "./LogIn.css"
+import API from '../utils/API';
 
-export default class Login extends Component {
+export default (props) => {
+  const [, dispatch] = useStoreContext();
+  const [redirect, setRedirect] = useState(false)
+  const [state, setState] = useState({
+    email: "",
+    password: ""
+  })
 
-state = {
-  emailAddressLogin: "",
-  passwordLogin: ""
-}
+  const handleChange = (event) => {
+    const { name, value } = event.target
+    setState({ ...state, [name]: value })
+  }
 
-emailChangedHandler = (event) => {
-  this.state.emailAddressLogin = event.target.value
-  this.setState(
-    {emailAddressLogin: event.target.value}
-  )
-}
+  const onLoginClicked = async () => {
+    console.log("username is : " + state.email + "password is :" + state.password)
+    try {
+      const user = await API.login(state);
+      if (user.status !== 200) throw "No User!"
+      dispatch({
+        type: "LOGIN_USER",
+        user: user.data
+      })
+      setRedirect(true)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
-passwordChangedHandler = (event) => {
-  this.state.passwordLogin = event.target.value
-  this.setState(
-    {passwordLogin: event.target.value}
-  )
-}
-
-onLoginClicked = () => {
-  console.log("username is : " + this.state.emailAddressLogin + "password is :" + this.state.passwordLogin)
-}
-  
-
-  render() {
-    return (
-      <div className="base-container" ref={this.props.containerRef}>
-
-        <h1 className="header title">Feed Me!</h1>
-        <div className="content">
-          <div className="image">
-            <img className="styleMe" src={loginImg} alt="restaurantPhoto" />
-          </div>
-          <div className="form">
-            <div className="form-group">
-              <label className="label" htmlFor="email">E-mail:</label><br />
-              <input className="input form-control" type="text" id="email" name="email" type="text" id="email" placeholder="E-mail address" onChange={this.emailChangedHandler} value={this.state.emailAddressLogin}/>
-            </div>
-            <div className="form-group">
-              <label className="label" htmlFor="password">Password:</label><br />
-              <input className="input form-control" type="password" id="password" name="password" placeholder="password" onChange={this.passwordChangedHandler} value={this.state.passwordLogin}/>
-            </div>
-          </div>
+  return (
+    <div className="base-container" ref={props.containerRef}>
+      {redirect && <Redirect to="/swipe" />}
+      <h1 className="header title">Feed Me!</h1>
+      <div className="content">
+        <div className="image">
+          <img className="styleMe" src={loginImg} alt="restaurantPhoto" />
         </div>
-        <div className="footer">
-          <button type="button" className="btn loginBtn" onClick={this.onLoginClicked}>
-            Login
-          </button>
-          <div className="newUserLink">
-            <Link to="/signup" className="newUser">New User? Click Here</Link>
+        <div className="form">
+          <div className="form-group">
+            <label className="label" htmlFor="email">E-mail:</label><br />
+            <input className="input form-control" type="text" id="email" name="email" placeholder="E-mail address" onChange={handleChange} value={state.email} />
+          </div>
+          <div className="form-group">
+            <label className="label" htmlFor="password">Password:</label><br />
+            <input className="input form-control" type="password" id="password" name="password" placeholder="password" onChange={handleChange} value={state.password} />
           </div>
         </div>
       </div>
-    );
-  }
+      <div className="footer">
+        <button type="button" className="btn loginBtn" onClick={onLoginClicked}>
+          Login
+          </button>
+        <div className="newUserLink">
+          <Link to="/signup" className="newUser">New User? Click Here</Link>
+        </div>
+      </div>
+    </div>
+  );
 }

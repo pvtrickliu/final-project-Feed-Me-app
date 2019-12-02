@@ -5,7 +5,7 @@ const passport = require('../../config/passport')
 
 
 app.post("/login", passport.authenticate("local"), function(req, res){
-    res.send("WELCOME!")
+    res.json(req.user.dataValues)
 });
 
 app.get("/auth", function(req, res){
