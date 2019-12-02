@@ -52,6 +52,12 @@ const reducer = (state, action) => {
         user: action.user
       }
 
+    case "ADD_FAVORITES":
+      return {
+        ...state,
+        favorites: [action.restaurant, ...state.favorites]
+      }
+
     default:
       return state;
   };
@@ -59,31 +65,25 @@ const reducer = (state, action) => {
 
 const StoreProvider = ({ value = [], ...props }) => {
   const [state, dispatch] = useReducer(reducer, {
-    // state:
-    // users: [ ],
     user: {},
     images: [],
     currentImage: 0,
     counter: 0,
     isShowing: false,
-    restaurants: []
-    // restaurant: {name, address, phone number, hours of operation},
-    // favorites: [ ],
-    // favorite: {name, address, phone number, hours of operation}
+    restaurants: [],
+    currentRestaurant: {
+      id: 0,
+      name: "",
+      address: "",
+      phone: "",
+      hours: "",
+      type: ""
+    },
+    favorites: []
   });
 
   return <Provider value={[state, dispatch]} {...props} />;
 };
-
-//   posts: [],
-//   currentPost: {
-//     _id: 0,
-//     title: "",
-//     body: "",
-//     author: ""
-//   },
-//   favorites: [],
-//   loading: false'
 
 const useStoreContext = () => {
   return useContext(StoreContext);

@@ -14,8 +14,22 @@ export default {
                 .then(res => {return res})
                 .catch(err => console.log(err))
   },
+
   login: creds => axios.post('/api/users/login', creds),
+  
   signUp: creds => axios.post('/api/users', creds),
+
+  getFav: function (userId) {
+    return axios.get("/api/users/" + userId + "/favorites")
+  },
+
+  saveFav: function(userId, favData) {
+    return axios.post("/api/users/" + userId + "/favorites", favData)
+  },
+
+  deleteFav: function(userId, fid) {
+    return axios.delete("/api/users/" + userId + "/favorites/" + fid)
+  }
 };
 
 

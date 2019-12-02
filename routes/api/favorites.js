@@ -18,32 +18,32 @@ const app = express()
 //         });
 // });
 
-app.get("/:userId/favorites", function (req, res) {
-    console.log(req.params.userId)
-    db.Restaurants.findAll({
-        where: {
-            UserId: req.params.userId,
-        }
-    })
-        .then(dbRestaurants => {
-            if (dbRestaurants.length > 1) {
-                res.json("Empty Object")
-            }
-            console.log(dbRestaurants)
-            res.json(dbRestaurants)
-        })
-        .catch(err => console.log(err))
-});
+// app.get("/:userId/favorites", function (req, res) {
+//     console.log(req.params.userId)
+//     db.Restaurants.findAll({
+//         where: {
+//             UserId: req.params.userId,
+//         }
+//     })
+//         .then(dbRestaurants => {
+//             if (dbRestaurants.length > 1) {
+//                 res.json("Empty Object")
+//             }
+//             console.log(dbRestaurants)
+//             res.json(dbRestaurants)
+//         })
+//         .catch(err => console.log(err))
+// });
 
 
-app.delete("/:userId/favorites/:fid", function (req, res) {
-    db.Restaurants.destroy({
-        where: { id: req.params.id }
-    }).then(function (results) {
-        res.json(results);
-    })
-});
-module.exports = app;
+// app.delete("/:userId/favorites/:fid", function (req, res) {
+//     db.Restaurants.destroy({
+//         where: { id: req.params.id }
+//     }).then(function (results) {
+//         res.json(results);
+//     })
+// });
+// module.exports = app;
 
 // update favorite list
 // app.put(":id/choices", function (req, res) {

@@ -23,6 +23,7 @@ export default (props) => {
     console.log("username is : " + state.email + "password is :" + state.password)
     try {
       const user = await API.login(state);
+      console.log(user)
       if (user.status !== 200) throw "No User!"
       dispatch({
         type: "LOGIN_USER",

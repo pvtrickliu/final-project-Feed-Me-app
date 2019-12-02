@@ -25,8 +25,8 @@ const MapBox = ({ height, restaurants }) => {
                 defaultCenter={{
                     // lat: parseFloat(restaurants[0].restaurant.location.latitude),
                     // lng: parseFloat(restaurants[0].restaurant.location.longitude)
-                    lat: 59.955413,
-                    lng: 30.337844
+                    lat: 33.955413,
+                    lng: -118.337844
                 }}
                 defaultZoom={10}
             >

@@ -3,7 +3,7 @@ import "./style.css";
 
 function Btn(props) {
     return (
-        <button className="YesNo-btn" onClick={props.onClick}>
+        <button id={props.id || ''} className="YesNo-btn" onClick={props.onClick}>
             {props.text}
         </button>
     )
