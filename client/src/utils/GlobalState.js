@@ -85,14 +85,6 @@ const StoreProvider = ({ value = [], ...props }) => {
     counter: 0,
     isShowing: false,
     restaurants: [],
-    // currentRestaurant: {
-    //   id: 0,
-    //   name: "",
-    //   address: "",
-    //   phone: "",
-    //   hours: "",
-    //   type: ""
-    // },
     favorites: []
   });
 
