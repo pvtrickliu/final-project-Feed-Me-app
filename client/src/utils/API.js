@@ -24,11 +24,16 @@ export default {
   },
 
   getFav: function (userId) {
-    return axios.get("/api/users/" + userId + "/favorites")
+      return axios.get("/api/users/" + userId + "/favorites")
   },
 
   deleteFav: function(userId, fid) {
     return axios.delete("/api/users/" + userId + "/favorites/" + fid)
+  },
+
+  logOut: function() {
+    console.log("utils LOGOUT")
+    return axios.get("/api/users/logout").then(res=>{return res})
   }
 };
 

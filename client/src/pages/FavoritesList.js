@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { useStoreContext } from "../utils/GlobalState";
 import API from "../utils/API";
 import { ListItem, List } from "../components/List";
-import Btn from "../components/Btn"
+import Btn from "../components/Btn";
 import { Link } from "react-router-dom";
-import "./Favorites.css"
+import "./Favorites.css";
 
 function Favorites() {
     const [state, dispatch] = useStoreContext();
@@ -20,10 +20,19 @@ function Favorites() {
         API.deleteFav(state.user.id, e)
             .then(() => dispatch({ type: "DELETE_FAVORITES", id: e }))
             .catch(err => console.log(err))
-    }
+    };
+    
+    const logOut = () => {
+        console.log("component logout")
+        API.logOut().then(res=>console.log(res))
+    };
 
     return (
         <div className="swipe">
+            <div className="newUserLink">
+                <Link to="/swipe" className="newUser">Back to swipe</Link>
+            </div>
+                <Btn text="log Out" onClick={logOut}/>
             <h1 className="header title">Feed Me!</h1>
             <span className="showFav">
                 YOUR FAVORITES

@@ -22,3 +22,9 @@
 .checkin {
     border: rgb(238, 58, 58);
 }
+
+.newUser {
+    color: yellow !important;
+    font-weight: bold;
+    margin-bottom: 3vh;
+}
