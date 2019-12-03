@@ -1,7 +1,4 @@
 import React, { useState } from 'react';
-import { useStoreContext } from '../utils/GlobalState';
-import { Redirect } from 'react-router'
-import loginImg from "../photos/feedmePhoto.jpg";
 import { Link } from "react-router-dom"
 import "./SignUp.css"
 import API from '../utils/API';

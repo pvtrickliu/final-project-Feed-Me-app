@@ -1,70 +1,52 @@
 import React, { useEffect } from "react";
+import { useStoreContext } from "../utils/GlobalState";
+import API from "../utils/API";
 import { ListItem, List } from "../components/List";
 import Btn from "../components/Btn"
-// import DeleteBtn from "../components/DeleteBtn";
 import { Link } from "react-router-dom";
-import { useStoreContext } from "../utils/GlobalState";
-// import { REMOVE_FAVORITE, LOADING, UPDATE_FAVORITES } from "../utils/actions";
-
+import "./Favorites.css"
 
 function Favorites() {
     const [state, dispatch] = useStoreContext();
 
-    
+    useEffect(() => {
+        API.getFav(state.user.id)
+            .then(res => dispatch({ type: "GET_FAVORITES", favorites: res.data }))
+            .catch(err => console.log(err))
+    }, []);
 
-    console.log('fav', state.favorites)
+    const deleteFav = (e) => {
+        console.log(e)
+        API.deleteFav(state.user.id, e)
+            .then(() => dispatch({ type: "DELETE_FAVORITES", id: e }))
+            .catch(err => console.log(err))
+    }
 
     return (
-        <div>
+        <div className="swipe">
+            <h1 className="header title">Feed Me!</h1>
+            <span className="showFav">
+                YOUR FAVORITES
+            </span>
 
+            {state.favorites.length ? (
+                <List>
+                    {state.favorites.map((favorite, index) => (
+                        <ListItem key={index}>
+                            <h2 className="name">{favorite.name}</h2>
+                            <div className="address">{favorite.address}</div>
+                            <div className="phone">{favorite.phone}</div>
+                            <div className="hours">{favorite.hours}</div>
+                            {/* <Btn text="Check in" onClick={() => deleteFav(favorite.id)}/> */}
+                            <Btn className="checkin" text="Check in" id={favorite.id} onClick={() => deleteFav(favorite.id)} />
+                        </ListItem>
+                    ))}
+                </List>
+            ) : (
+                <h1 className="recommend">You haven't added any favorites yet!</h1>
+            )}
         </div>
     )
-
-}
-// const FavoritesList = () => {
-//   const [state, dispatch] = useStoreContext();
-
-//   const getFavorites = () => {
-//     dispatch({ type: LOADING });
-//     dispatch({ type: UPDATE_FAVORITES });
-//   };
-
-//   const removeFromFavorites = id => {
-//     dispatch({
-//       type: REMOVE_FAVORITE,
-//       _id: id
-//     });
-//   };
-
-//   useEffect(() => {
-//     getFavorites();
-//   }, []);
-
-//   return (
-//     <div className="container mb-5 mt-5">
-//       <h1 className="text-center">Here's All of Your Favorite Posts</h1>
-//       {state.favorites.length ? (
-//         <List>
-//           <h3 className="mb-5 mt-5">Click on a post to view in detail</h3>
-//           {state.favorites.map(post => (
-//             <ListItem key={post._id}>
-//               <Link to={"/posts/" + post._id}>
-//                 <strong>
-//                   {post.title} by {post.author}
-//                 </strong>
-//               </Link>
-//               <DeleteBtn onClick={() => removeFromFavorites(post._id)} />
-//             </ListItem>
-//           ))}
-//         </List>
-//       ) : (
-//         <h3>You haven't added any favorites yet!</h3>
-//       )}
-//       <div className="mt-5">
-//         <Link to="home">Back to home</Link>
-//       </div>
-//     </div>
-//   );
-// };
+};
 
 export default Favorites;

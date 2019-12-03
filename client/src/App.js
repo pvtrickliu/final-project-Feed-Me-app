@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./pages/LogIn";
 import SignUp from "./pages/SignUp";
@@ -19,7 +19,7 @@ function App() {
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/swipe" component={Swipe} />
             <Route exact path="/restaurants" component={Restaurants} />
-            {/* <Route exact path="/favorites" component={Favorites} /> */}
+            <Route exact path="/favorites" component={Favorites} />
           </Switch>
         </StoreProvider>
       </div>

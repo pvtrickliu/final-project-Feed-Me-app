@@ -19,12 +19,12 @@ export default {
   
   signUp: creds => axios.post('/api/users', creds),
 
-  getFav: function (userId) {
-    return axios.get("/api/users/" + userId + "/favorites")
-  },
-
   saveFav: function(userId, favData) {
     return axios.post("/api/users/" + userId + "/favorites", favData)
+  },
+
+  getFav: function (userId) {
+    return axios.get("/api/users/" + userId + "/favorites")
   },
 
   deleteFav: function(userId, fid) {

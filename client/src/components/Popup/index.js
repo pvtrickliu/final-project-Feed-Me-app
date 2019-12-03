@@ -36,6 +36,9 @@ const Popup = (props) => {
             return axios.get(`/api/restaurants?lat=${lat}&lon=${lon}&cuisineId=${cuisineId}&entity_id=${zipcode}`)
                 .then(res => {
                     console.log(res.data)
+
+                    // make array element for each resto
+
                     dispatch({
                         type: "PUT_RESTAURANTS",
                         restaurants: res.data
