@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom"
-import "./SignUp.css"
 import API from '../utils/API';
+import { Link } from "react-router-dom";
+import "./SignUp.css";
 
 export default (props) => {
   const [redirect, setRedirect] = useState(false)
@@ -30,7 +30,7 @@ export default (props) => {
   return (
     <div className="base-container" ref={props.containerRef}>
       <div className="backLink">
-        <Link to="/">Back to Log-In</Link>
+        <Link to="/" className="newUser">Back to Log-In</Link>
       </div>
       <h5 className="hungryText">Hungry...?</h5>
       <p className="joinText">sign up with</p>
