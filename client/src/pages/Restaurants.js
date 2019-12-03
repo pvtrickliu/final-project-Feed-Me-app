@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useStoreContext } from "../utils/GlobalState";
 import MapBox from '../components/MapBox';
 import API from "../utils/API";
