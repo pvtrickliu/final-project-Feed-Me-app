@@ -72,7 +72,6 @@ app.put("/:id", function (req, res) {
 app.get("/logout", function (req, res) {
     console.log('logging out....')
     req.logout();
-    res.redirect("/");
 });
 
 // Route for post user's favoriotes
