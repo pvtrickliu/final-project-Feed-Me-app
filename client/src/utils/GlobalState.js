@@ -58,6 +58,20 @@ const reducer = (state, action) => {
         favorites: [action.restaurant, ...state.favorites]
       }
 
+    case "GET_FAVORITES":
+      return {
+        ...state,
+        favorites: [...action.favorites]
+      }
+
+    case "DELETE_FAVORITES":
+      return {
+        ...state,
+        favorites: state.favorites.filter((restaurant) => {
+          return restaurant.id !== action.id;
+        })
+      }
+
     default:
       return state;
   };
@@ -71,14 +85,14 @@ const StoreProvider = ({ value = [], ...props }) => {
     counter: 0,
     isShowing: false,
     restaurants: [],
-    currentRestaurant: {
-      id: 0,
-      name: "",
-      address: "",
-      phone: "",
-      hours: "",
-      type: ""
-    },
+    // currentRestaurant: {
+    //   id: 0,
+    //   name: "",
+    //   address: "",
+    //   phone: "",
+    //   hours: "",
+    //   type: ""
+    // },
     favorites: []
   });
 

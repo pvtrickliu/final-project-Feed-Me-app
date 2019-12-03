@@ -19,7 +19,7 @@ function App() {
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/swipe" component={Swipe} />
             <Route exact path="/restaurants" component={Restaurants} />
-            {/* <Route exact path="/favorites" component={Favorites} /> */}
+            <Route exact path="/favorites" component={Favorites} />
           </Switch>
         </StoreProvider>
       </div>

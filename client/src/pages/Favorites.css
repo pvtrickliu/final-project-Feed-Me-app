@@ -1,0 +1,24 @@
+.list {
+    width: 80%;
+    margin: 3vh auto;
+    border: none;
+}
+
+.list-group-item {
+    background-color: white;
+    margin: 1.5vh auto;
+}
+
+.name, .address, .phone, .hours {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(238, 58, 58);
+    margin-top: 1vh;
+}
+
+.address, .phone, .hours {
+    font-size: 1.5em;
+}
+
+.checkin {
+    border: rgb(238, 58, 58);
+}
