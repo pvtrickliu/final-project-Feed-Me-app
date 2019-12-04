@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import GoogleMapReact from 'google-map-react'
-import './Marker.css'
+import GoogleMapReact from 'google-map-react';
+import './Marker.css';
 import { useStoreContext } from "../utils/GlobalState";
 
 
@@ -22,14 +22,11 @@ const Marker = (props) => {
 
 const MapBox = ({ height }) => {
     const [state, dispatch] = useStoreContext()
-    const { restaurants } = JSON.parse(sessionStorage.getItem("FeedMe"))
+    const restaurants = sessionStorage.getItem("FeedMe") ?  JSON.parse(sessionStorage.getItem("FeedMe")): [];
     console.log(process.env.REACT_APP_GOOGLE_API)
 
     useEffect(() => {
-        dispatch({
-            type: "PUT_RESTAURANTS",
-            restaurants
-        })
+        console.log(state.restaurants)
     }, [])
 
 
@@ -41,7 +38,9 @@ const MapBox = ({ height }) => {
                 defaultCenter={state.restaurants[0] ? {
                     lat: parseFloat(state.restaurants[0].restaurant.location.latitude),
                     lng: parseFloat(state.restaurants[0].restaurant.location.longitude)
-                } : {
+                } : restaurants.length ? {lat: parseFloat(state.restaurants[0].restaurant.location.latitude),
+                lng: parseFloat(state.restaurants[0].restaurant.location.longitude)}
+                : {
                         lat: 33.955413,
                         lng: -118.337844
                     }

@@ -50,7 +50,7 @@ reader.on('line', async function (line) {
         } else {
             try {
                 await postImage(line, foodType, cuisineId)
-
+                console.log(line);
             } catch (err) {
                 console.log(err);
             };
