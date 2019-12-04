@@ -19,7 +19,7 @@ export default {
   
   signUp: creds => axios.post('/api/users', creds),
 
-  checkLogState: ()=> axios.get('/api/users/logged').then(res=>{return res}),
+//  checkLogState: ()=> axios.get('/api/users/logged').then(res=>{return res}),
 
   saveFav: function(userId, favData) {
     return axios.post("/api/users/" + userId + "/favorites", favData)
