@@ -69,7 +69,7 @@ const Swipe = () => {
       <h1 className="header title">Feed Me!</h1>
       <div>
         <div>
-        <Btn text="log Out" onClick={logOut}/>
+        <Btn text="Log Out" onClick={logOut}/>
         </div>
         <Link to="/favorites" >
           <span className="showFav">

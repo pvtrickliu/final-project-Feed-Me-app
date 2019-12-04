@@ -48,7 +48,7 @@ function Favorites() {
                 <Link to="/swipe" className="newUser">Back to swipe</Link>
             </div>
             <div>
-                <Btn text="log Out" onClick={logOut} />
+                <Btn text="Log Out" onClick={logOut} />
             </div>
             <span className="showFav">
                 YOUR FAVORITES
