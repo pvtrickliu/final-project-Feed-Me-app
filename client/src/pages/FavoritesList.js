@@ -42,7 +42,14 @@ function Favorites() {
 
     return (
         <div className="swipe">
+
             <h1 className="header title">Feed Me!</h1>
+            <div className="newUserLink">
+                <Link to="/swipe" className="newUser">Back to swipe</Link>
+            </div>
+            <div>
+                <Btn text="log Out" onClick={logOut} />
+            </div>
             <span className="showFav">
                 YOUR FAVORITES
             </span>
@@ -63,12 +70,6 @@ function Favorites() {
             ) : (
                     <h1 className="recommend">You haven't added any favorites yet!</h1>
                 )}
-
-            <div className="newUserLink">
-                <Link  to="/swipe"><Btn text="Back to swipe" className="newUser" /></Link>
-
-                <Btn text="Log Out" onClick={logOut} />
-            </div>
         </div>
     )
 };

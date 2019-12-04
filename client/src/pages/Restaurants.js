@@ -37,11 +37,25 @@ function Restaurants() {
     API.saveFav(state.user.id, { address, name, phone, hours });
   }
 
+  const logOut = () => {
+    console.log("component logout")
+    API.logOut().then(res => {
+      if (res.status === 200) {
+        window.location.replace('/')
+      }
+    })
+  };
+
   return (
     <div className="swipe">
-
       <h1 className="header title">Feed Me!</h1>
       <div>
+        <div className="newUserLink">
+          <Link to="/swipe" className="newUser">Back to swipe</Link>
+        </div>
+        <div>
+          <Btn text="log Out" onClick={logOut} />
+        </div>
         <Link to="/favorites" >
           <span className="showFav">
             YOUR FAVORITES
@@ -66,9 +80,10 @@ function Restaurants() {
           ))}
         </List>
       ) : (
-        <h1 className="recommend">You haven't searched any restaurants yet!</h1>
-      )}
-    <Link to="/swipe"><Btn text="Back to swipe" /></Link>
+          <h1 className="recommend">You haven't searched any restaurants yet!</h1>
+        )}
+
+
     </div>
   );
 }
