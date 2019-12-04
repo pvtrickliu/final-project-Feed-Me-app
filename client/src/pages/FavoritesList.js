@@ -22,6 +22,15 @@ function Favorites() {
             .catch(err => console.log(err))
     };
 
+    const backtoSwipe = () => {
+        console.log("component logout")
+        API.logOut().then(res => {
+            if(res.status === 200){
+                window.location.replace('/swipe')
+            }
+        })
+    };
+
     const logOut = () => {
         console.log("component logout")
         API.logOut().then(res => {
@@ -57,6 +66,7 @@ function Favorites() {
 
             <div className="newUserLink">
                 <Link  to="/swipe"><Btn text="Back to swipe" className="newUser" /></Link>
+
                 <Btn text="Log Out" onClick={logOut} />
             </div>
         </div>

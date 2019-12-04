@@ -50,6 +50,7 @@ const Popup = (props) => {
                 .then(res => {
                     console.log(res.data)
 
+
                     // make array element for each resto
 
                     dispatch({

@@ -73,8 +73,8 @@ const Swipe = () => {
           : null
       }
       <div className="button">
-        <Button text="No" onClick={toNo} />
-        <Button text="Yes" onClick={toYes} />
+        <Button text="I'll pass" onClick={toNo} />
+        <Button text="Let's Eat" onClick={toYes} />
       </div>
 
       <Popup isShowing={state.isShowing} hide={hide} hideMe={hideMe} setRedirect={handleRedirect}/>
