@@ -10,6 +10,16 @@ import "./Restaurants.css"
 function Restaurants() {
   const [state, dispatch] = useStoreContext();
 
+  // useEffect(() => {
+
+  //   return () => {
+  //     let foo = dispatch("PUT_RESTAURANTS", {restaurants:[]});
+  //     console.log(foo)
+  //     debugger;
+
+  //   }
+  // },[])
+
   console.log('resto', state.restaurants)
 
 //   useEffect(()=>{
@@ -39,9 +49,10 @@ function Restaurants() {
         </Link>
       </div>
       <h1 className="recommend">Recommended Restaurants</h1>
+      
 
       <MapBox height="300px" restaurants={state.restuarants} className="map" />
-
+      
       {state.restaurants.length ? (
         <List className="restaurants">
           {state.restaurants.map((restaurant, index) => (
@@ -57,7 +68,7 @@ function Restaurants() {
       ) : (
         <h1 className="recommend">You haven't searched any restaurants yet!</h1>
       )}
-
+    <Link to="/swipe"><Btn text="Back to swipe" /></Link>
     </div>
   );
 }

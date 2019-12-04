@@ -1,4 +1,4 @@
-import React, { useRef} from "react";
+import React, { useRef } from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import { Link, Redirect } from "react-router-dom";
 import ReactDOM from 'react-dom';
@@ -14,10 +14,19 @@ const Popup = (props) => {
     const [state, dispatch] = useStoreContext();
 
     const zipCode = useRef();
-    const getZipCode = () => {
+    const getZipCode = (event) => {
+        event.preventDefault()
         zipcode = zipCode.current.value;
-        console.log(zipcode)
-        showPosition(undefined);
+
+        axios.get(`https://maps.googleapis.com/maps/api/geocode/json?key=${process.env.REACT_APP_GOOGLE_API}&components=postal_code:${zipcode}`)
+            .then((res) => {
+                console.log(res.data)
+                showPosition({ lat: res.data.results[0].geometry.location.lat, lon: res.data.results[0].geometry.location.lng });
+                redirect()
+            });
+    };
+    function redirect(){
+        props.setRedirect()
     }
 
     function getLocation() {
@@ -28,15 +37,19 @@ const Popup = (props) => {
 
     function showPosition(position) {
         console.log('position', position)
-        if(position) {
+        if (position.coords) {
             lat = position.coords.latitude;
-            lon = position.coords.longitude;  
+            lon = position.coords.longitude;
+        } else {
+            lat = position.lat
+            lon = position.lon
         }
-        if ((lat && lon) || zipcode) {
-            return axios.get(`/api/restaurants?lat=${lat}&lon=${lon}&cuisineId=${cuisineId}&entity_id=${zipcode}`)
-            .then(res => {
-                console.log(res.data)
-                sessionStorage.setItem("FeedMe", JSON.stringify({ location: { lat, lon }, restaurants: res.data }))  
+
+        if ((lat && lon)) {
+            return axios.get(`/api/restaurants?lat=${lat}&lon=${lon}&cuisineId=${cuisineId}`)
+                .then(res => {
+                    console.log(res.data)
+
 
                     // make array element for each resto
 
@@ -44,6 +57,8 @@ const Popup = (props) => {
                         type: "PUT_RESTAURANTS",
                         restaurants: res.data
                     })
+                    props.hideMe()
+                    redirect()
                 })
         }
     };
@@ -51,12 +66,15 @@ const Popup = (props) => {
     if (props.isShowing) {
         cuisineId = state.images[state.currentImage].cuisineId;
     }
-    if(state.restaurants.length > 0) {
-        return (
-            <Redirect to='/restaurants'/>
-            )
-        
-    }
+    // if (state.restaurants.length > 0 && props.isShowing === false) {
+    //     debugger;
+    //     props.hideMe();
+    //     // dispatch({type: "HIDE_POP"})
+    //     // return (
+    //     //     <Redirect to='/restaurants' />
+    //     // )
+
+    // }
 
     return (props.isShowing ? ReactDOM.createPortal(
         <React.Fragment>
@@ -75,9 +93,9 @@ const Popup = (props) => {
                     <p>Enter your zip code:</p>
                     <form>
                         <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" ref={zipCode} />
+                        <input type="submit" className="submit" onClick={getZipCode}/>
                     </form>
                     {/* <Link to="/restaurants" > */}
-                    <button type="button" className="submit" onClick={getZipCode}>Submit</button>
                     {/* </Link> */}
                 </div>
             </div>
