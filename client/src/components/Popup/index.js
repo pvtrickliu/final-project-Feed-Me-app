@@ -22,11 +22,11 @@ const Popup = (props) => {
             .then((res) => {
                 console.log(res.data)
                 showPosition({ lat: res.data.results[0].geometry.location.lat, lon: res.data.results[0].geometry.location.lng });
-                redirect()
+                //redirect()
             });
     };
     function redirect(){
-        props.setRedirect()
+//       props.setRedirect()
     }
 
     function getLocation() {
@@ -53,12 +53,12 @@ const Popup = (props) => {
 
                     // make array element for each resto
 
-                    dispatch({
-                        type: "PUT_RESTAURANTS",
-                        restaurants: res.data
-                    })
-                    props.hideMe()
-                    redirect()
+                    // dispatch({
+                    //     type: "PUT_RESTAURANTS",
+                    //     restaurants: res.data
+                    // })
+                    props.hideMe(res.data)
+                    // redirect()
                 })
         }
     };
