@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useStoreContext } from '../utils/GlobalState';
 import { Redirect } from 'react-router'
 import loginImg from "../photos/feedmePhoto.jpg";
@@ -13,6 +13,18 @@ export default (props) => {
     email: "",
     password: ""
   })
+  // let path = useHistory();
+
+  useEffect(()=>{
+    if(!redirect){
+      API.checkLogState().then(res=>{
+      console.log(res)
+    if(res.data[0]){
+      setRedirect(true)
+    }
+    })
+    }
+      },[])
 
   const handleChange = (event) => {
     const { name, value } = event.target
