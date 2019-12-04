@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import API from '../utils/API';
 import { Link } from "react-router-dom";
 import "./SignUp.css";
+import { useStoreContext } from '../utils/GlobalState';
+import { Redirect } from 'react-router'
 
 export default (props) => {
   const [redirect, setRedirect] = useState(false)
@@ -29,6 +31,7 @@ export default (props) => {
 
   return (
     <div className="base-container" ref={props.containerRef}>
+      {redirect && <Redirect to="/swipe" />}
       <div className="backLink">
         <Link to="/" className="newUser">Back to Log-In</Link>
       </div>

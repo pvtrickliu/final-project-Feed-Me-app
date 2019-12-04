@@ -22,10 +22,19 @@ function Favorites() {
             .catch(err => console.log(err))
     };
 
+    const backtoSwipe = () => {
+        console.log("component logout")
+        API.logOut().then(res => {
+            if(res.status === 200){
+                window.location.replace('/swipe')
+            }
+        })
+    };
+
     const logOut = () => {
         console.log("component logout")
         API.logOut().then(res => {
-            if (res.status === 200) {
+            if(res.status === 200){
                 window.location.replace('/')
             }
         })

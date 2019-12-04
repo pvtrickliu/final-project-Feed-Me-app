@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
+import { Link , Redirect} from "react-router-dom";
 import { useStoreContext } from "../utils/GlobalState";
 import Button from "../components/Btn";
 import Btn from "../components/Btn";
@@ -9,8 +9,14 @@ import "./Swipe.css";
 
 const Swipe = () => {
   const [state, dispatch] = useStoreContext();
+  const [redirect, setRedirect] = useState(false)
 
   console.log(state.user)
+
+  const handleRedirect =()=>{
+    setRedirect(true)
+    console.log("redirecting...")
+  }
 
   useEffect(() => {
     API.setImage()
@@ -50,9 +56,16 @@ const Swipe = () => {
         }
     })
 };
+  const hideMe = () => {
+    dispatch({
+      type: "HIDE_POP",
+      isShowing: false
+    });
+    console.log('hideMe',state)
+  };
 
   return (
-    <div className="swipe">
+    redirect ? <Redirect to='/restaurants'></Redirect> : <div className="swipe">
       <h1 className="header title">Feed Me!</h1>
       <div>
         <div>
@@ -72,12 +85,13 @@ const Swipe = () => {
           : null
       }
       <div className="button">
-        <Button text="No" onClick={toNo} />
-        <Button text="Yes" onClick={toYes} />
+        <Button text="I'll pass" onClick={toNo} />
+        <Button text="Let's Eat" onClick={toYes} />
       </div>
 
-      <Popup isShowing={state.isShowing} hide={hide} />
+      <Popup isShowing={state.isShowing} hide={hide} hideMe={hideMe} setRedirect={handleRedirect}/>
     </div>
+    
   );
 };
 

@@ -35,6 +35,10 @@ app.get("/:id", function (req, res) {
         .catch(err => console.log(err))
 });
 
+app.post('/logged', function(req,res){
+    console.log(req.user)
+})
+
 app.post("/", function (req, res) {
     db.Users.findOne({
         where: { email: req.body.email }
@@ -72,7 +76,6 @@ app.put("/:id", function (req, res) {
 app.get("/logout", function (req, res) {
     console.log('logging out....')
     req.logout();
-    res.redirect("/");
 });
 
 // Route for post user's favoriotes

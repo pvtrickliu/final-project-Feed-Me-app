@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useStoreContext } from '../utils/GlobalState';
 import { Redirect } from 'react-router'
 import loginImg from "../photos/feedmePhoto.jpg";
@@ -7,12 +7,24 @@ import "./LogIn.css"
 import API from '../utils/API';
 
 export default (props) => {
-  const [, dispatch] = useStoreContext();
+  const [global, dispatch] = useStoreContext();
   const [redirect, setRedirect] = useState(false)
   const [state, setState] = useState({
     email: "",
     password: ""
   })
+  // let path = useHistory();
+
+  useEffect(() => {
+    // if (!redirect) {
+    //   API.checkLogState().then(res => {
+    //     console.log(res)
+    //     if (res.data[0]) {
+    //       setRedirect(true)
+    //     }
+    //   })
+    // }
+  }, [])
 
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -37,7 +49,7 @@ export default (props) => {
 
   return (
     <div className="base-container" ref={props.containerRef}>
-      {redirect && <Redirect to="/swipe" />}
+      {Object.keys(global.user).length > 0  && <Redirect to="/swipe" />}
       <h1 className="header title">Feed Me!</h1>
       <div className="content">
         <div className="image">
