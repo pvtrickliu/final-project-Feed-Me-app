@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import API from "../utils/API";
-import { Link , Redirect} from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { useStoreContext } from "../utils/GlobalState";
 import Button from "../components/Btn";
 import Btn from "../components/Btn";
@@ -13,7 +13,7 @@ const Swipe = () => {
 
   console.log(state.user)
 
-  const handleRedirect =()=>{
+  const handleRedirect = () => {
     setRedirect(true)
     console.log("redirecting...")
   }
@@ -51,17 +51,23 @@ const Swipe = () => {
   const logOut = () => {
     console.log("component logout")
     API.logOut().then(res => {
-        if(res.status === 200){
-            window.location.replace('/')
-        }
+      if (res.status === 200) {
+        window.location.replace('/')
+      }
     })
-};
-  const hideMe = () => {
+  };
+  const hideMe = (data) => {
+    setRedirect(true)
     dispatch({
       type: "HIDE_POP",
       isShowing: false
     });
-    console.log('hideMe',state)
+    dispatch({
+      type: "PUT_RESTAURANTS",
+      restaurants: data
+    });
+
+    console.log('hideMe', state)
   };
 
   return (
@@ -69,7 +75,7 @@ const Swipe = () => {
       <h1 className="header title">Feed Me!</h1>
       <div>
         <div>
-        <Btn text="Log Out" onClick={logOut}/>
+          <Btn text="Log Out" onClick={logOut} />
         </div>
         <Link to="/favorites" >
           <span className="showFav">
@@ -89,9 +95,9 @@ const Swipe = () => {
         <Button text="Let's Eat" onClick={toYes} />
       </div>
 
-      <Popup isShowing={state.isShowing} hide={hide} hideMe={hideMe} setRedirect={handleRedirect}/>
+      <Popup isShowing={state.isShowing} hide={hide} hideMe={hideMe} setRedirect={handleRedirect} />
     </div>
-    
+
   );
 };
 
