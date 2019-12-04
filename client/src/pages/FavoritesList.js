@@ -21,19 +21,26 @@ function Favorites() {
             .then(() => dispatch({ type: "DELETE_FAVORITES", id: e }))
             .catch(err => console.log(err))
     };
-    
+
     const logOut = () => {
         console.log("component logout")
-        API.logOut().then(res=>console.log(res))
+        API.logOut().then(res => {
+            if (res.status === 200) {
+                window.location.replace('/')
+            }
+        })
     };
 
     return (
         <div className="swipe">
+
+            <h1 className="header title">Feed Me!</h1>
             <div className="newUserLink">
                 <Link to="/swipe" className="newUser">Back to swipe</Link>
             </div>
-                <Btn text="log Out" onClick={logOut}/>
-            <h1 className="header title">Feed Me!</h1>
+            <div>
+                <Btn text="log Out" onClick={logOut} />
+            </div>
             <span className="showFav">
                 YOUR FAVORITES
             </span>
@@ -52,8 +59,8 @@ function Favorites() {
                     ))}
                 </List>
             ) : (
-                <h1 className="recommend">You haven't added any favorites yet!</h1>
-            )}
+                    <h1 className="recommend">You haven't added any favorites yet!</h1>
+                )}
         </div>
     )
 };
