@@ -40,6 +40,7 @@ const reducer = (state, action) => {
       };
 
     case "PUT_RESTAURANTS":
+      console.log('put',state, action)
       return {
         ...state,
         restaurants: action.restaurants

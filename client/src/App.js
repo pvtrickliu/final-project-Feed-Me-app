@@ -6,8 +6,6 @@ import Swipe from "./pages/Swipe";
 import Restaurants from "./pages/Restaurants";
 import Favorites from "./pages/FavoritesList";
 import { StoreProvider } from "./utils/GlobalState";
-// import API from './utils/API'
-// import Nav from "./components/Nav";
 
 function App() {
   return (

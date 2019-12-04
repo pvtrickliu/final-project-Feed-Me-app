@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
+import { Link , Redirect} from "react-router-dom";
 import { useStoreContext } from "../utils/GlobalState";
 import Button from "../components/Btn";
 import Popup from "../components/Popup";
@@ -8,8 +8,14 @@ import "./Swipe.css";
 
 const Swipe = () => {
   const [state, dispatch] = useStoreContext();
+  const [redirect, setRedirect] = useState(false)
 
   console.log(state.user)
+
+  const handleRedirect =()=>{
+    setRedirect(true)
+    console.log("redirecting...")
+  }
 
   useEffect(() => {
     API.setImage()
@@ -41,8 +47,16 @@ const Swipe = () => {
     });
   };
 
+  const hideMe = () => {
+    dispatch({
+      type: "HIDE_POP",
+      isShowing: false
+    });
+    console.log('hideMe',state)
+  };
+
   return (
-    <div className="swipe">
+    redirect ? <Redirect to='/restaurants'></Redirect> : <div className="swipe">
       <h1 className="header title">Feed Me!</h1>
       <div>
         <Link to="/favorites" >
@@ -63,8 +77,9 @@ const Swipe = () => {
         <Button text="Yes" onClick={toYes} />
       </div>
 
-      <Popup isShowing={state.isShowing} hide={hide} />
+      <Popup isShowing={state.isShowing} hide={hide} hideMe={hideMe} setRedirect={handleRedirect}/>
     </div>
+    
   );
 };
 
