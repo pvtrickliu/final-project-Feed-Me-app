@@ -30,12 +30,13 @@ const Popup = (props) => {
         console.log('position', position)
         if(position) {
             lat = position.coords.latitude;
-            lon = position.coords.longitude;    
+            lon = position.coords.longitude;  
         }
         if ((lat && lon) || zipcode) {
             return axios.get(`/api/restaurants?lat=${lat}&lon=${lon}&cuisineId=${cuisineId}&entity_id=${zipcode}`)
-                .then(res => {
-                    console.log(res.data)
+            .then(res => {
+                console.log(res.data)
+                sessionStorage.setItem("FeedMe", JSON.stringify({ location: { lat, lon }, restaurants: res.data }))  
 
                     // make array element for each resto
 

@@ -35,6 +35,10 @@ app.get("/:id", function (req, res) {
         .catch(err => console.log(err))
 });
 
+app.post('/logged', function(req,res){
+    console.log(req.user)
+})
+
 app.post("/", function (req, res) {
     db.Users.findOne({
         where: { email: req.body.email }

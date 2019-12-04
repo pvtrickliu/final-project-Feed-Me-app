@@ -12,6 +12,10 @@ function Restaurants() {
 
   console.log('resto', state.restaurants)
 
+//   useEffect(()=>{
+// API.checkLogState().then(res=>console.log(res))
+//   },[])
+
   const addFav = (e) => {
     console.log(e.target.id)
     console.log(state.user)
