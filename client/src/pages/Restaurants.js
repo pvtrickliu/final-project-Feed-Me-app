@@ -71,6 +71,7 @@ function Restaurants() {
         <List className="restaurants">
           {state.restaurants.map((restaurant, index) => (
             <ListItem key={index}>
+              <div className="hours">{index + 1}</div>
               <h2 className="name">{restaurant.restaurant.name}</h2>
               <div className="address">{restaurant.restaurant.location.address}</div>
               <div className="phone">{restaurant.restaurant.phone_numbers}</div>
